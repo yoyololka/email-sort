@@ -1,3 +1,4 @@
+import pytest
 from pathlib import Path
 from src.email_reader import Email
 from src.email_classifier import EmailClassifier
@@ -108,6 +109,7 @@ def test_spam_beats_incidents(classifier):
     result = classifier.classify(email)
     assert result.category == "spam"
     
+@pytest.fixture
 def high_confidence_cases():
     return [
         (make_email(subject="Вы выиграли iPhone 15!"), "spam"),
